@@ -1,9 +1,7 @@
 ﻿using EntityFrameworkCorePagination.Nuget.Pagination;
 using MediatR;
-using ReadEase.Application.Responses;
 using ReadEase.Application.Services;
 using ReadEase.Domain.Entities;
-using System.Linq;
 
 namespace ReadEase.Application.Features.BookFeatures.Queries.GetAllBook;
 

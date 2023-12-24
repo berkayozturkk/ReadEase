@@ -16,6 +16,8 @@ public class Book : Entity
     public BookStatus Status { get; set; }
     public BookGenre Genre { get; set; }
 
+    public Book(){}
+
     public Book(string id) : base(id) {}
 
     public Book(string id,string title, string author, string description, string bookGenreID, int iSBN, DateTime? publishDate, string imageURL, BookStatus status) : this(id)

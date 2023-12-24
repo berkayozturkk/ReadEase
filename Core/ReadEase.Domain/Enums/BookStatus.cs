@@ -2,6 +2,6 @@
 
 public enum BookStatus
 {
-    Available,     // Represents the status when the book is available in the library.
-    OnLoan         // Represents the status when the book is on loan.
+    Available = 1,     // Represents the status when the book is available in the library.
+    OnLoan = 0          // Represents the status when the book is on loan.
 }

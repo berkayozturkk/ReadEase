@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
 using EntityFrameworkCorePagination.Nuget.Pagination;
 using GenericRepository;
+using ReadEase.Application.Features.BookFeatures.Command.CreateBook;
 using ReadEase.Application.Features.BookFeatures.Queries.GetAllBook;
-using ReadEase.Application.Responses;
 using ReadEase.Application.Services;
 using ReadEase.Application.Services.Repositories;
 using ReadEase.Domain.Entities;
+using ReadEase.Domain.Enums;
 
 namespace ReadEase.Persistance.Services;
 
@@ -20,6 +21,18 @@ public class BookService : IBookService
         _bookRepository = bookRepository;
         __unitOfWork = unitOfWork;
         _mapper = mapper;
+    }
+
+    public async Task CreateBookAsync(CreateBookCommand request, CancellationToken cancellationToken)
+    {
+        Book newBook = _mapper.Map<Book>(request);
+
+        newBook.Id = Guid.NewGuid().ToString();
+        newBook.Status = BookStatus.Available;
+        newBook.PublishDate = DateTime.Now;
+
+        await _bookRepository.AddAsync(newBook, cancellationToken);
+        await __unitOfWork.SaveChangesAsync(cancellationToken);
     }
 
     public async Task<PaginationResult<Book>> GetAllBookAsync(GetAllBookQuery request, CancellationToken cancellationToken)

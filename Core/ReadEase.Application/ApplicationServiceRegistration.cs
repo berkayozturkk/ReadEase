@@ -1,7 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using ReadEase.Application.Services;
-using System.Reflection;
+using MediatR;
+using ReadEase.Application.Behaviors;
+using FluentValidation;
 
 namespace ReadEase.Application;
 
@@ -13,6 +14,12 @@ public static class ApplicationServiceRegistration
         //services.AddScoped<IBookService, BookService>();
         services.AddMediatR(cfr => cfr.RegisterServicesFromAssemblies(
             typeof(ReadEase.Application.AssemblyReference).Assembly));
+
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+
+        services.AddValidatorsFromAssembly(
+             typeof(ReadEase.Application.AssemblyReference).Assembly);
+
         return services;
     }
 }

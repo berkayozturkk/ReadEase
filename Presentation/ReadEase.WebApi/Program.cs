@@ -21,10 +21,6 @@ builder.Services.AddScoped<IBookRepository, BookRepository>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork<BaseDbContext>>();
 
-
-//builder.Services.AddMediatR(cfr => cfr.RegisterServicesFromAssemblies(
-//    typeof(ReadEase.Application.AssemblyReference).Assembly));
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
