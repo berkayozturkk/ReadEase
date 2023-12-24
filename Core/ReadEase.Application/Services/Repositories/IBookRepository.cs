@@ -1,7 +1,6 @@
-﻿using ReadEase.Domain.Entities;
+﻿using GenericRepository;
+using ReadEase.Domain.Entities;
 
 namespace ReadEase.Application.Services.Repositories;
 
-public interface IBookRepository : IRepository<Book>
-{
-}
+public interface IBookRepository : IRepository<Book> {}

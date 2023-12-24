@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ReadEase.Persistance.Context;
+using System.Reflection;
 
 namespace ReadEase.Persistance;
 
@@ -11,6 +12,8 @@ public static class PersitsanceServiceRegistration
     (this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<BaseDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("ReadEaseDbConnStr")));
+
+        services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
         return services;
     }

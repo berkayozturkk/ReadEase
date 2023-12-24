@@ -1,4 +1,11 @@
 using ReadEase.Persistance;
+using ReadEase.Application;
+using ReadEase.Application.Services;
+using ReadEase.Persistance.Services;
+using ReadEase.Application.Services.Repositories;
+using ReadEase.Persistance.Repositories;
+using GenericRepository;
+using ReadEase.Persistance.Context;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +14,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddPersistanceServices(builder.Configuration);
+builder.Services.AddApplicationServices(builder.Configuration);
+
+builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IBookRepository, BookRepository>();
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork<BaseDbContext>>();
+
+
+//builder.Services.AddMediatR(cfr => cfr.RegisterServicesFromAssemblies(
+//    typeof(ReadEase.Application.AssemblyReference).Assembly));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

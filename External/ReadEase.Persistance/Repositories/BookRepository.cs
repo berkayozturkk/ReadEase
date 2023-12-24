@@ -1,10 +1,11 @@
-﻿using ReadEase.Application.Services.Repositories;
+﻿using GenericRepository;
+using ReadEase.Application.Services.Repositories;
 using ReadEase.Domain.Entities;
 using ReadEase.Persistance.Context;
 
 namespace ReadEase.Persistance.Repositories;
 
-internal class BookRepository : BaseRepository<Book, BaseDbContext>, IBookRepository
+public class BookRepository : Repository<Book, BaseDbContext>, IBookRepository
 {
     public BookRepository(BaseDbContext context) : base(context) {}
 }
