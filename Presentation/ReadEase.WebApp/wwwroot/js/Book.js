@@ -25,7 +25,7 @@ function initPage() {
             data: { bookQuery: bookQuery },
         })
             .done(function (result) {
-                debugger;
+                //debugger;
                 var jsonResult = JSON.parse(result);
                 showBooks(bookListContainer,jsonResult.datas);
             })
@@ -89,7 +89,7 @@ function initPage() {
 }
 
 function showBooks(bookListContainer,books) {
-    debugger;
+    //debugger;
 
     bookListContainer.innerHTML = "";
 

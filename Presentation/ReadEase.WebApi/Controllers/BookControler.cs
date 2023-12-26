@@ -21,7 +21,16 @@ public class BookControler : BaseController
     public async Task<IActionResult> CreateBookAsync(CreateBookCommand request,
       CancellationToken cancellationToken)
     {
-        MessageResponse response = await Mediator.Send(request, cancellationToken);
-        return Ok(response);
+        try
+        {
+            MessageResponse response = await Mediator.Send(request, cancellationToken);
+            return Ok(response);
+        }
+        catch (Exception ex)
+        {
+            var xx = "";
+            return null;
+        }
+       
     }
 }
