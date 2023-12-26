@@ -18,6 +18,7 @@ builder.Services.AddApplicationServices(builder.Configuration);
 
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IBookGenreRepository, BookGenreRepository>();
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork<BaseDbContext>>();
 

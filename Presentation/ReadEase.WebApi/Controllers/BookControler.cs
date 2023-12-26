@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ReadEase.Application.Features.BookFeatures.Command.CreateBook;
 using ReadEase.Application.Features.BookFeatures.Queries.GetAllBook;
+using ReadEase.Application.Features.BookFeatures.Queries.GetAllBookGenre;
 using ReadEase.Domain.Dtos;
 using ReadEase.Domain.Entities;
 
@@ -18,19 +19,18 @@ public class BookControler : BaseController
     }
 
     [HttpPost("[action]")]
+    public async Task<IActionResult> GetAllBookGenreAsync(GetAllBookGenreQuery request,
+      CancellationToken cancellationToken)
+    {
+        IQueryable<GetAllBookGenreQueryItemDto> response = await Mediator.Send(request, cancellationToken);
+        return Ok(response);
+    }
+
+    [HttpPost("[action]")]
     public async Task<IActionResult> CreateBookAsync(CreateBookCommand request,
       CancellationToken cancellationToken)
     {
-        try
-        {
-            MessageResponse response = await Mediator.Send(request, cancellationToken);
-            return Ok(response);
-        }
-        catch (Exception ex)
-        {
-            var xx = "";
-            return null;
-        }
-       
+        MessageResponse response = await Mediator.Send(request, cancellationToken);
+        return Ok(response);
     }
 }

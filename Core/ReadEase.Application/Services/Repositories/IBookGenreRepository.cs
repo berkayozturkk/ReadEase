@@ -3,6 +3,6 @@ using ReadEase.Domain.Entities;
 
 namespace ReadEase.Application.Services.Repositories;
 
-public interface IBookRepository : IRepository<Book> {}
+public interface IBookGenreRepository : IRepository<BookGenre> {}
 
 
