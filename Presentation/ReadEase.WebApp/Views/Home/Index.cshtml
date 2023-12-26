@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .vertical-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* Kartlar arasındaki boşluk */
+    }
+
+    .vertical-card {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .card-image {
+        max-width: 150px; /* Maksimum resim genişliği */
+        max-height: 150px; /* Maksimum resim yüksekliği */
+        object-fit: cover; /* Resmi kaplayacak şekilde boyutlandır */
+        margin-right: 10px;
+    }
+
+    .card-details {
+        flex: 1;
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Books</h1>
+    @* <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+</div>
+
+<div id="books">
+    <div class="container mt-4 vertical-cards" id="bookList">
+        <!-- Kitapları burada listeleyeceğiz -->
+    </div>
+
+    <!-- Sayfalama -->
+    <ul class="pagination" id="pagination">
+        <!-- Sayfa numaralarını buraya ekleyeceğiz -->
+    </ul>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        $("#layoutId").attr("hidden", false);
+    });
+</script>
+
+
+
+
+
+

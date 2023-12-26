@@ -11,21 +11,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{913BEE01-F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{667F692E-2848-403D-90FB-ED46950B04E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadEase.Persistance", "External\ReadEase.Persistance\ReadEase.Persistance.csproj", "{7850145A-AFBF-456B-8DE5-93F7DA06A6E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReadEase.Persistance", "External\ReadEase.Persistance\ReadEase.Persistance.csproj", "{7850145A-AFBF-456B-8DE5-93F7DA06A6E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadEase.Infrastructure", "External\ReadEase.Infrastructure\ReadEase.Infrastructure.csproj", "{02AECBE8-7D81-48B3-B385-7FDD1E9EB9D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReadEase.Infrastructure", "External\ReadEase.Infrastructure\ReadEase.Infrastructure.csproj", "{02AECBE8-7D81-48B3-B385-7FDD1E9EB9D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadEase.Presentation", "External\ReadEase.Presentation\ReadEase.Presentation.csproj", "{5628E9A6-57FA-4218-A935-17B8021D93A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReadEase.Presentation", "External\ReadEase.Presentation\ReadEase.Presentation.csproj", "{5628E9A6-57FA-4218-A935-17B8021D93A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadEase.Application", "Core\ReadEase.Application\ReadEase.Application.csproj", "{2ECCF1B4-00B4-4E79-992B-6D8DA7ED1A0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReadEase.Application", "Core\ReadEase.Application\ReadEase.Application.csproj", "{2ECCF1B4-00B4-4E79-992B-6D8DA7ED1A0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadEase.Domain", "Core\ReadEase.Domain\ReadEase.Domain.csproj", "{FB86BBEB-216B-4ACD-BC33-7AE6947681C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReadEase.Domain", "Core\ReadEase.Domain\ReadEase.Domain.csproj", "{FB86BBEB-216B-4ACD-BC33-7AE6947681C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadEase.UnitTest", "test\ReadEase.UnitTest\ReadEase.UnitTest.csproj", "{3A891CF9-1BFC-4EF0-AA88-3CBC9EC36743}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReadEase.UnitTest", "test\ReadEase.UnitTest\ReadEase.UnitTest.csproj", "{3A891CF9-1BFC-4EF0-AA88-3CBC9EC36743}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{A85F99A1-5A5F-4B11-931E-F1958F054022}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadEase.WebApi", "Presentation\ReadEase.WebApi\ReadEase.WebApi.csproj", "{8E116F1C-3056-4731-ACF0-63490444C8C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReadEase.WebApi", "Presentation\ReadEase.WebApi\ReadEase.WebApi.csproj", "{8E116F1C-3056-4731-ACF0-63490444C8C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadEase.WebApp", "Presentation\ReadEase.WebApp\ReadEase.WebApp.csproj", "{C3B7BC3B-E4A7-4ACF-A0A1-867C0A88B982}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,10 @@ Global
 		{8E116F1C-3056-4731-ACF0-63490444C8C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E116F1C-3056-4731-ACF0-63490444C8C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E116F1C-3056-4731-ACF0-63490444C8C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3B7BC3B-E4A7-4ACF-A0A1-867C0A88B982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3B7BC3B-E4A7-4ACF-A0A1-867C0A88B982}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3B7BC3B-E4A7-4ACF-A0A1-867C0A88B982}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3B7BC3B-E4A7-4ACF-A0A1-867C0A88B982}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +82,7 @@ Global
 		{3A891CF9-1BFC-4EF0-AA88-3CBC9EC36743} = {7E66AEEB-763F-433F-B5AC-8C5DB7092AEA}
 		{A85F99A1-5A5F-4B11-931E-F1958F054022} = {DE256BE9-E035-403D-B8DD-6DFB07582630}
 		{8E116F1C-3056-4731-ACF0-63490444C8C4} = {A85F99A1-5A5F-4B11-931E-F1958F054022}
+		{C3B7BC3B-E4A7-4ACF-A0A1-867C0A88B982} = {A85F99A1-5A5F-4B11-931E-F1958F054022}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {58CA0B6B-7DFA-42C7-84C4-C7810E7F5DF5}
