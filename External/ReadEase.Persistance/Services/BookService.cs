@@ -53,7 +53,7 @@ public class BookService : IBookService
 
     public async Task<IQueryable<GetAllBookGenreQueryItemDto>> GetAllBookGenreAsync(GetAllBookGenreQuery request, CancellationToken cancellationToken)
     {
-        var data = _bookGenreRepository.GetAll();
+        var data = _bookGenreRepository.GetAll().OrderBy(x => x.GenreName);
 
         IQueryable<GetAllBookGenreQueryItemDto> dtos = data.Select(bg => new GetAllBookGenreQueryItemDto
         {

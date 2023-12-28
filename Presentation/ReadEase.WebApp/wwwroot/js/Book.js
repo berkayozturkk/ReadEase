@@ -2,10 +2,10 @@ $(document).ready(function () {
 
     //$("#layoutId").attr("hidden", false);
 
-    initPage();
+    getBookList();
 });
 
-function initPage() {
+function getBookList() {
     var bookListContainer = document.getElementById("bookList");
 
     if (bookListContainer != null) {
@@ -111,4 +111,62 @@ function showBooks(bookListContainer,books) {
             bookListContainer.appendChild(bookDiv);
         });
     }
+}
+
+function getAllBookGenre() {
+    var selectElement = document.getElementById('bookGenreId');
+    
+    if (selectElement.options.length === 0) {
+        $.ajax({
+            url: "/Book/GetBookGenreList",
+            type: "POST",
+        })
+        .done(function (result) {
+            //debugger;
+            var jsonResult = JSON.parse(result);
+
+            for (var i = 0; i < jsonResult.length; i++) {
+                var option = document.createElement('option');
+                option.value = jsonResult[i].id;  
+                option.text = jsonResult[i].genreName; 
+                selectElement.appendChild(option);
+            }
+        })
+        .fail(function (error) {
+            console.error("Error: " + error.responseText);
+        });
+    }
+}
+
+function addBook() {
+    debugger;
+    var book = {
+        title: document.getElementById('title').value,
+        author: document.getElementById('author').value,
+        description: document.getElementById('description').value,
+        bookGenreId: document.getElementById('bookGenreId').value,
+        ISBN: document.getElementById('isbn').value,
+        imageUrl: document.getElementById('imageUrl').value,
+    };
+    
+    if (book.title === '' && book.author === '' && book.description === '' && book.bookGenreId === '' && book.isbn === '' && book.imageUrl === '' &&
+        book.title === null && book.author === null && book.description === null && book.bookGenreId === null && book.isbn === null && book.imageUrl === null) {
+        alert("Tüm alanları doldurunuz.");
+        return;
+    } 
+    
+    $.ajax({
+        url: "/Book/AddBook",
+        type: "POST",
+        data: { book: book },
+    })
+    .done(function (result) {
+        debugger;
+        var jsonResult = JSON.parse(result);
+            
+    })
+    .fail(function (error) {
+        debugger;
+    console.error("Error: " + error.responseText);
+    });
 }

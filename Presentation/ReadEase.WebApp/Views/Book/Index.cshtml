@@ -56,23 +56,29 @@
 
         <label for="bookGenreId">Book Genre:</label>
         <select id="bookGenreId" name="bookGenreId" required>
-            <option value="1">Science Fiction</option>
-            <option value="2">Mystery</option>
-            <option value="3">Romance</option>
+          
         </select>
 
-        <label for="isbn">ISBN:</label>
-        <input type="number" id="isbn" name="isbn" required><br>
+        <label for="isbn">ISBN-13:</label>
+        <input id="isbn" name="isbn" maxLength="13" required><br>
 
         <label for="imageUrl">Image URL:</label>
         <input type="text" id="imageUrl" name="imageUrl"><br>
 
-        <button type="submit">Create Book</button>
+        <button type="submit" id="createBookButton">Create Book</button>
     </form>
 </body>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         $("#layoutId").attr("hidden", false);
+    });
+
+    window.onload = function () {
+        getAllBookGenre();
+    };
+
+    document.getElementById('createBookButton').addEventListener('click', function () {
+        addBook();
     });
 </script>
