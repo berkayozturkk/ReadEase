@@ -64,3 +64,24 @@ public class BookService : IBookService
         return dtos;
     }
 }
+
+public class LoanService : ILoanService
+{
+    private readonly ILoanRepository _loanRepository;
+    private readonly IBookRepository _bookRepository;
+    private readonly IUnitOfWork __unitOfWork;
+    private readonly IMapper _mapper;
+
+    public LoanService(ILoanRepository loanRepository, IBookRepository bookRepository, IUnitOfWork unitOfWork, IMapper mapper)
+    {
+        _loanRepository = loanRepository;
+        _bookRepository = bookRepository;
+        __unitOfWork = unitOfWork;
+        _mapper = mapper;
+    }
+
+    public Task BorrowBookAsync(CreateBookCommand request, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
+    }
+}
