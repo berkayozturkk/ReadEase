@@ -9,7 +9,7 @@ namespace ReadEase.Application.Services;
 
 public interface IBookService
 {
-    Task<PaginationResult<Book>> GetAllBookAsync(GetAllBookQuery request, CancellationToken cancellationToken);
+    Task<PaginationResult<GetAllBookQueryListItemDto>> GetAllBookAsync(GetAllBookQuery request, CancellationToken cancellationToken);
     Task<IQueryable<GetAllBookGenreQueryItemDto>> GetAllBookGenreAsync(GetAllBookGenreQuery request, CancellationToken cancellationToken);
     Task CreateBookAsync(CreateBookCommand request, CancellationToken cancellationToken);
 }

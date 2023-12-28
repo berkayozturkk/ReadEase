@@ -15,6 +15,7 @@ public class Book : Entity
 
     public BookStatus Status { get; set; }
     public BookGenre Genre { get; set; }
+    public Loan Loans { get; set; }
 
     public Book(){}
 

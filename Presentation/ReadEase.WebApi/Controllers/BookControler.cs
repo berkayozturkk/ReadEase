@@ -14,7 +14,7 @@ public class BookControler : BaseController
     public async Task<IActionResult> GetAllBookAsync(GetAllBookQuery request,
           CancellationToken cancellationToken)
     {
-        PaginationResult<Book> response = await Mediator.Send(request, cancellationToken);
+        PaginationResult<GetAllBookQueryListItemDto> response = await Mediator.Send(request, cancellationToken);
         return Ok(response);
     }
 

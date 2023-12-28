@@ -7,5 +7,5 @@ namespace ReadEase.Application.Features.BookFeatures.Queries.GetAllBook;
 public record GetAllBookQuery(
     int pageNumber = 1,
     int pageSize = 10,
-    string Search = "") : IRequest<PaginationResult<Book>>
+    string Search = "") : IRequest<PaginationResult<GetAllBookQueryListItemDto>>
 {}

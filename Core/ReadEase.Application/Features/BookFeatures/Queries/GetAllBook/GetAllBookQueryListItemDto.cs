@@ -11,7 +11,8 @@ public class GetAllBookQueryListItemDto
     public string Description { get; set; }
     public int ISBN { get; set; }
     public DateTime? PublishDate { get; set; }
+    public DateTime? ReturnDate { get; set; }
     public string? ImageURL { get; set; }
     public BookStatus Status { get; set; }
-    public BookGenre Genre { get; set; }
+    //public BookGenre Genre { get; set; }
 }

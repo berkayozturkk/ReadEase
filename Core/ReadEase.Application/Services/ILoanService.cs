@@ -1,8 +1,9 @@
 ﻿using ReadEase.Application.Features.BookFeatures.Command.CreateBook;
+using ReadEase.Application.Features.LoanFeatures.Command.BorrowBook;
 
 namespace ReadEase.Application.Services;
 
 public interface ILoanService
 {
-    Task BorrowBookAsync(CreateBookCommand request, CancellationToken cancellationToken);
+    Task BorrowBookAsync(BorrowBookCommand request, CancellationToken cancellationToken);
 }

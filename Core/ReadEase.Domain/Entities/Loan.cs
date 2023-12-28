@@ -15,8 +15,8 @@ public class Loan : Entity
     public BookStatus Status { get; set; }
 
 
+    public Loan(){}
     public Loan(string id) : base(id){}
-
     public Loan(string id, string bookID, string borrowerName, string contactNumber, DateTime borrowDate, DateTime returnDate, BookStatus status) : this(id)
     {
         BookID = bookID;

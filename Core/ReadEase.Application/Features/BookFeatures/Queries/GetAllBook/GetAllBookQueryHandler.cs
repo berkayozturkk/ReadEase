@@ -5,7 +5,7 @@ using ReadEase.Domain.Entities;
 
 namespace ReadEase.Application.Features.BookFeatures.Queries.GetAllBook;
 
-public sealed class GetAllBookQueryHandler : IRequestHandler<GetAllBookQuery, PaginationResult<Book>>
+public sealed class GetAllBookQueryHandler : IRequestHandler<GetAllBookQuery, PaginationResult<GetAllBookQueryListItemDto>>
 {
     private readonly IBookService _bookService;
 
@@ -14,9 +14,9 @@ public sealed class GetAllBookQueryHandler : IRequestHandler<GetAllBookQuery, Pa
         _bookService = bookService;
     }
 
-    public async Task<PaginationResult<Book>> Handle(GetAllBookQuery request, CancellationToken cancellationToken)
+    public async Task<PaginationResult<GetAllBookQueryListItemDto>> Handle(GetAllBookQuery request, CancellationToken cancellationToken)
     {
-        PaginationResult<Book> books = await _bookService.GetAllBookAsync(request, cancellationToken);
+        PaginationResult<GetAllBookQueryListItemDto> books = await _bookService.GetAllBookAsync(request, cancellationToken);
         return books;
     }
 }

@@ -14,3 +14,4 @@ public record CreateBookCommand : IRequest<MessageResponse>
 
     public CreateBookCommand(){}
 }
+

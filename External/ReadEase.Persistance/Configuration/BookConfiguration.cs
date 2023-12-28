@@ -10,5 +10,9 @@ public class BookConfiguration : IEntityTypeConfiguration<Book>
     {
         builder.ToTable("Books");
         builder.HasKey(p => p.Id);
+
+        //builder.HasMany(b => b.Loans)          // Book, Loans koleksiyonuna sahiptir
+        //       .WithOne(l => l.Book)           // Loan, bir Book'a aittir
+        //       .HasForeignKey(l => l.BookId);
     }
 }
