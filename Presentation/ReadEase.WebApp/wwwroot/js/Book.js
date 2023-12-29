@@ -13,7 +13,7 @@ function getBookList() {
         {
             PageNumber: 1,
             PageSize: 10,
-            Search: ""
+            Search: "" 
         }
 
         $.ajax({
@@ -33,13 +33,10 @@ function getBookList() {
 }
 
 function showBooks(bookListContainer,books) {
-    debugger;
-
     bookListContainer.innerHTML = "";
 
     if (books) {
         books.forEach(function (book) {
-            debugger;
             var bookDiv = document.createElement("div");
             bookDiv.className = "card mb-1 vertical-card text-center"; // text-center sınıfı ile içeriği ortala
             bookDiv.innerHTML = `
