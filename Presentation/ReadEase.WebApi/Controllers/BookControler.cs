@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ReadEase.Application.Features.BookFeatures.Command.CreateBook;
 using ReadEase.Application.Features.BookFeatures.Queries.GetAllBook;
+using ReadEase.Application.Features.BookFeatures.Queries.GetAllBookByStatus;
 using ReadEase.Application.Features.BookFeatures.Queries.GetAllBookGenre;
 using ReadEase.Domain.Dtos;
 using ReadEase.Domain.Entities;
@@ -15,6 +16,14 @@ public class BookControler : BaseController
           CancellationToken cancellationToken)
     {
         PaginationResult<GetAllBookQueryListItemDto> response = await Mediator.Send(request, cancellationToken);
+        return Ok(response);
+    }
+
+    [HttpPost("[action]")]
+    public async Task<IActionResult> GetAllBookByStatusAsync(GetAllBookByStatusQuery request,
+      CancellationToken cancellationToken)
+    {
+        IQueryable<GetAllBookByStatusQueryListItemDto> response = await Mediator.Send(request, cancellationToken);
         return Ok(response);
     }
 

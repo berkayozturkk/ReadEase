@@ -3,6 +3,7 @@ using EntityFrameworkCorePagination.Nuget.Pagination;
 using GenericRepository;
 using ReadEase.Application.Features.BookFeatures.Command.CreateBook;
 using ReadEase.Application.Features.BookFeatures.Queries.GetAllBook;
+using ReadEase.Application.Features.BookFeatures.Queries.GetAllBookByStatus;
 using ReadEase.Application.Features.BookFeatures.Queries.GetAllBookGenre;
 using ReadEase.Application.Services;
 using ReadEase.Application.Services.Repositories;
@@ -66,15 +67,24 @@ public class BookService : IBookService
         PaginationResult<GetAllBookQueryListItemDto> returnModel = new PaginationResult<GetAllBookQueryListItemDto>(books, result.PageNumber, result.PageSize, result.TotalPages);
 
         return returnModel;
-        //PaginationResult<Book> data = await _bookRepository
-        //    .GetWhere(p => p.Title.ToLower().Contains(request.Search.ToLower()))
-        //    .ToPagedListAsync(request.pageNumber, request.pageSize, cancellationToken);
+    }
 
-        //List<Book> result = data.Datas.ToList<Book>();
+    public async Task<IQueryable<GetAllBookByStatusQueryListItemDto>> GetAllBookByStatusAsync(GetAllBookByStatusQuery request, CancellationToken cancellationToken)
+    {
+        IQueryable<Book> getAllBookByStatus = _bookRepository.GetWhere(x => x.Status == request.BookStatus);
 
-        //var xdata = _mapper.Map<GetAllBookQueryListItemDto>(result);
+        //IQueryable<GetAllBookByStatusQueryListItemDto> data 
+        //    = _mapper.Map<IQueryable<GetAllBookByStatusQueryListItemDto>>(getAllBookByStatus);
 
-        //return data;
+        IQueryable<GetAllBookByStatusQueryListItemDto> allBookByStatus = getAllBookByStatus.Select(
+            x => new GetAllBookByStatusQueryListItemDto
+            {
+                Id = x.Id,
+                Title = x.Title
+            }
+         );
+
+        return allBookByStatus; 
     }
 
     public async Task<IQueryable<GetAllBookGenreQueryItemDto>> GetAllBookGenreAsync(GetAllBookGenreQuery request, CancellationToken cancellationToken)

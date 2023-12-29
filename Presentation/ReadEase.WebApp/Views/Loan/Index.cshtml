@@ -3,7 +3,72 @@
 *@
 @{
 }
-<h1>Loan</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrow Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Create Loan Request</h1>
+
+    <form action="/process-loan-request" method="post">
+        <label for="bookId">Book ID:</label>
+        <select type="text" id="bookId" name="bookId" required>
+            <option>Ayşegül Tatilde</option>
+        </select>
+        <label for="borrowerName">Borrower Name:</label>
+        <input type="text" id="borrowerName" name="borrowerName" required>
+
+        <label for="borrowerSurname">Borrower Surname:</label>
+        <input type="text" id="borrowerSurname" name="borrowerSurname" required>
+
+        <label for="contactNumber">Contact Number:</label>
+        <input type="text" id="contactNumber" name="contactNumber" required>
+
+        <label for="returnDate">Return Date:</label>
+        <input type="date" id="returnDate" name="returnDate" required>
+
+        <button type="submit">Submit Loan Request</button>
+    </form>
+</body>
+</html>
+
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
