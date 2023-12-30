@@ -1,4 +1,5 @@
-﻿using ReadEase.Persistance.Context;
+﻿using ReadEase.Domain.Entities;
+using ReadEase.Persistance.Context;
 
 
 namespace ReadEase.WebApi.Middleware;
@@ -20,8 +21,24 @@ public class ExceptionMiddleware : IMiddleware
         }
         catch (Exception ex)
         {
-            //await LogExceptionToDatabaseAsync(ex, context.Request);
+            await LogExceptionToDatabaseAsync(ex, context.Request);
             //await HandleExceptionAsync(context, ex);
         }
+    }
+
+    private async Task LogExceptionToDatabaseAsync(Exception ex, HttpRequest request)
+    {
+        ErrorLog errorLog = new()
+        {
+            Id = Guid.NewGuid().ToString(),
+            ErrorMessage = ex.Message,
+            StackTree = ex.StackTrace,
+            RequestPath = request.Path,
+            RequestMethod = request.Method,
+            TimeStamp = DateTime.Now,
+        };
+
+        await _context.Set<ErrorLog>().AddAsync(errorLog, default);
+        await _context.SaveChangesAsync(default);
     }
 }
