@@ -6,6 +6,7 @@ using ReadEase.Application.Services.Repositories;
 using ReadEase.Persistance.Repositories;
 using GenericRepository;
 using ReadEase.Persistance.Context;
+using ReadEase.WebApi.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,8 @@ builder.Services.AddControllers();
 
 builder.Services.AddPersistanceServices(builder.Configuration);
 builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services.AddTransient<ExceptionMiddleware>();
+
 
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<ILoanService, LoanService>();
@@ -37,6 +40,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddlewareExtensions();
 
 app.UseHttpsRedirection();
 
