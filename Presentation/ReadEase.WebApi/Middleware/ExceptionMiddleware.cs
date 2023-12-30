@@ -1,5 +1,6 @@
 ﻿using ReadEase.Domain.Entities;
 using ReadEase.Persistance.Context;
+using Serilog;
 
 
 namespace ReadEase.WebApi.Middleware;
@@ -21,8 +22,8 @@ public class ExceptionMiddleware : IMiddleware
         }
         catch (Exception ex)
         {
+            //await LogExceptionToSerilog(ex, context.Request);
             await LogExceptionToDatabaseAsync(ex, context.Request);
-            //await HandleExceptionAsync(context, ex);
         }
     }
 
@@ -40,5 +41,14 @@ public class ExceptionMiddleware : IMiddleware
 
         await _context.Set<ErrorLog>().AddAsync(errorLog, default);
         await _context.SaveChangesAsync(default);
+    }
+
+    private async Task LogExceptionToSerilog(Exception ex, HttpRequest request)
+    {
+        Log.Logger = new LoggerConfiguration()
+            .WriteTo.Console()
+            .WriteTo.File($"{DateTime.Now}-log.txt", rollingInterval: RollingInterval.Day)
+            .CreateLogger();
+        Log.Error(ex, "An unhandled exception occurred. RequestPath: {RequestPath}, RequestMethod: {RequestMethod}", request.Path, request.Method);
     }
 }

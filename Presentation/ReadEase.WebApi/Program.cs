@@ -7,6 +7,7 @@ using ReadEase.Persistance.Repositories;
 using GenericRepository;
 using ReadEase.Persistance.Context;
 using ReadEase.WebApi.Middleware;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +18,6 @@ builder.Services.AddControllers();
 builder.Services.AddPersistanceServices(builder.Configuration);
 builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddTransient<ExceptionMiddleware>();
-
 
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<ILoanService, LoanService>();
@@ -34,12 +34,16 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+//builder.Host.UseSerilog((context,conf) => conf.ReadFrom.Configuration(context.Configuration));
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//app.UseSerilogRequestLogging();
 
 app.UseMiddlewareExtensions();
 

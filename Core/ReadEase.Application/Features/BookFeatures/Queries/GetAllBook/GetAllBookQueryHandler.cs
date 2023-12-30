@@ -16,7 +16,6 @@ public sealed class GetAllBookQueryHandler : IRequestHandler<GetAllBookQuery, Pa
 
     public async Task<PaginationResult<GetAllBookQueryListItemDto>> Handle(GetAllBookQuery request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException("ExceptionMid");
         PaginationResult<GetAllBookQueryListItemDto> books = await _bookService.GetAllBookAsync(request, cancellationToken);
         return books;
     }
