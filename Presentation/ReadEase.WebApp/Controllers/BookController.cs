@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Net;
 using ReadEase.Application.Features.BookFeatures.Queries.GetAllBookGenre;
 using ReadEase.Application.Features.BookFeatures.Command.CreateBook;
+using ReadEase.Application.Features.BookFeatures.Queries.GetAllBookByStatus;
 
 namespace ReadEase.WebApp.Controllers
 {
@@ -38,6 +39,36 @@ namespace ReadEase.WebApp.Controllers
                 var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
                 using(var httpClient = new HttpClient())
+                {
+                    var response = await httpClient.PostAsync(requestUrl, content);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var responseData = await response.Content.ReadAsStringAsync();
+                        return Ok(responseData);
+                    }
+                    else
+                    {
+                        var errorMessage = await response.Content.ReadAsStringAsync();
+                        return BadRequest(errorMessage);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500);
+            }
+        }
+
+        public async Task<IActionResult> GetAllBookByStatus(GetAllBookByStatusQuery bookQuery)
+        {
+            try
+            {
+                var requestUrl = baseApiUrl + "BookControler/GetAllBookByStatus";
+
+                var jsonData = JsonConvert.SerializeObject(bookQuery);
+                var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+                using (var httpClient = new HttpClient())
                 {
                     var response = await httpClient.PostAsync(requestUrl, content);
                     if (response.IsSuccessStatusCode)

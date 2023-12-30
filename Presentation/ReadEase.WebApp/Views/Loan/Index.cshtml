@@ -42,16 +42,22 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
+        #searchInput {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
-    <h1>Create Loan Request</h1>
+    <h1>Create Loan</h1>
 
     <form action="/process-loan-request" method="post">
-        <label for="bookId">Book ID:</label>
-        <select type="text" id="bookId" name="bookId" required>
-            <option>Ayşegül Tatilde</option>
+        <label for="bookId">Book</label>
+        <input type="text" id="searchInput" placeholder="Search book...">
+        <select type="text" id="bookId" name="bookId" multiple size="5" required>
+           
         </select>
+
         <label for="borrowerName">Borrower Name:</label>
         <input type="text" id="borrowerName" name="borrowerName" required>
 
@@ -64,7 +70,7 @@
         <label for="returnDate">Return Date:</label>
         <input type="date" id="returnDate" name="returnDate" required>
 
-        <button type="submit">Submit Loan Request</button>
+        <button type="submit" onclick="borrowBook()">Submit Loan</button>
     </form>
 </body>
 </html>
@@ -74,4 +80,13 @@
     document.addEventListener("DOMContentLoaded", function () {
         $("#layoutId").attr("hidden", false);
     });
+
+    window.onload = function () {
+        unloanBookList();
+    };
+
+    document.getElementById("searchInput").addEventListener("input", function () {
+        searchUnloanBookList();
+    });
+
 </script>
