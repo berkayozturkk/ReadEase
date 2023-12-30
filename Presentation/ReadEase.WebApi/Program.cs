@@ -21,8 +21,11 @@ builder.Services.AddTransient<ExceptionMiddleware>();
 
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<ILoanService, LoanService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IBookGenreRepository, BookGenreRepository>();
 builder.Services.AddScoped<ILoanRepository, LoanRepository>();
 

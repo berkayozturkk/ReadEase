@@ -12,6 +12,7 @@ public class BaseDbContext : DbContext
     public DbSet<Book> Books { get; set; }
     public DbSet<Loan> Loans { get; set; }
     public DbSet<BookGenre> BookGenres { get; set; }
+    public DbSet<User> Users { get; set; }
 
     public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
     {

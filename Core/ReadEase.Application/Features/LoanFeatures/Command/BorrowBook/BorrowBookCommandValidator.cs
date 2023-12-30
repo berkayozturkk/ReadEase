@@ -25,8 +25,8 @@ public class BorrowBookCommandValidator : AbstractValidator<BorrowBookCommand>
 
     private bool BeInPast(DateTime returnDate)
     {
-        // ReturnDate'in şu anki tarihten küçük olup olmadığını kontrol et
-        return returnDate < DateTime.Now;
+        // ReturnDate'in şu anki tarihten büyük olup olmadığını kontrol et
+        return returnDate > DateTime.Now;
     }
 
     private bool BeValidGuid(string id)

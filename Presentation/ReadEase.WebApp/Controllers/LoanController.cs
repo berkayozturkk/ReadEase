@@ -18,7 +18,7 @@ namespace ReadEase.WebApp.Controllers
         {
             try
             {
-                var requestUrl = baseApiUrl + "LoanController/BorrowBookAsync";
+                var requestUrl = baseApiUrl + "Loan/BorrowBook";
 
                 var jsonData = JsonConvert.SerializeObject(borrowCommand);
                 var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
